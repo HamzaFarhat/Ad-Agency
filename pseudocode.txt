@@ -1,0 +1,48 @@
+Ad Agency Management System Pseudocode
+
+Data Structures:
+- Campaign class: Represents an advertising campaign
+    - Properties: name, active status, dayparting (time restrictions)
+    - Methods for: checking if campaign should run, turning on/off
+
+- Brand class: Represents a client brand
+    - Properties: name, budgets (monthly/daily), campaigns list, spend tracking
+    - Methods for: campaign management, spend tracking, budget checks
+
+Main Flow:
+1. Create Brand instance with:
+   - Brand name
+   - Monthly budget limit
+   - Daily budget limit
+   
+2. Create Campaign(s) with:
+   - Campaign name
+   - Active status (default true)
+   - Optional dayparting hours (start_hour, end_hour)
+   
+3. Add campaigns to brand using add_campaign()
+
+4. For each ad spend:
+   a. Track spend using accumulate_spend()
+   b. Check if budgets exceeded
+   c. Turn off campaigns if needed
+   
+5. Daily operations:
+   - Reset daily spend at start of new day
+   - Turn campaigns back on if budget allows
+   
+6. Monthly operations:
+   - Reset monthly spend at start of new month
+   - Turn campaigns back on if budget allows
+
+Budget Management:
+- Track daily and monthly spend separately
+- Compare against respective budget limits
+- Automatically disable campaigns when limits reached
+- Re-enable campaigns when budgets reset if within limits
+
+Time Management:
+- Check campaign dayparting restrictions
+- Only run campaigns during allowed hours
+- Reset budgets based on current date vs last reset date
+
